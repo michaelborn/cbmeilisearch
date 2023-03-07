@@ -621,6 +621,24 @@ component extends="BaseModelTest" appMapping="root" {
 					expect( result ).toBeStruct().toHaveKey( "hits" );
 					expect( arrayFirst( result.hits ) ).toHaveKey( "_formatted" );
 				} );
+
+				it( "can do multi-index search", function(){
+					var response = model.multiSearch( [ {
+							"q" : "Owls",
+							"indexUid" : "books",
+							"limit" : 5
+						},{
+							"q" : "Owls",
+							"indexUid" : "movies",
+							"limit" : 5
+						} );
+					expect( response.isSuccess() ).toBeTrue();
+					var result = response.json();
+
+					// debug( result );
+					expect( result ).toBeStruct().toHaveKey( "hits" );
+					expect( arrayFirst( result.hits ) ).toHaveKey( "_formatted" );
+				} );
 			} );
 		} );
 	}

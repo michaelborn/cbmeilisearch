@@ -65,4 +65,31 @@ component accessors="true" extends="BaseRequest" {
 			.send();
 	}
 
+	/**
+	 * Search multiple indexes simultaneously.
+	 * 
+	 * <code>
+	 * 	multiSearch( [ {
+	 * 		"q" : "Owls",
+	 * 		"indexUid" : "books",
+	 * 		"limit" : 5
+	 * 	},{
+	 * 		"q" : "Owls",
+	 * 		"indexUid" : "movies",
+	 * 		"limit" : 5
+	 * 	} )
+	 * </code>
+	 *
+	 * @queries An array of query objects
+	 */
+	public HyperResponse function multiSearch( required array queries ){
+		return HyperClient
+			.asJson()
+			.setURL( "/indexes/#arguments.index#/search" )
+			.setBody({
+				"queries" : arguments.queries
+			})
+			.setMethod( "POST" )
+			.send();
+	}
 }
