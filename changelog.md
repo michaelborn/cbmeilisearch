@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ----
 
+## [x.x.0] => 2023-TBD
+
+* 🤖 Verified on Meilisearch v1.0.0
+
 ## [1.1.0] => 2023-JANUARY
 
 * Added support for Meilisearch v0.30
